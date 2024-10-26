@@ -1,0 +1,303 @@
+/* Global Styles */
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body.add {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body takes full height */
+}
+
+.add .container {
+    width: 100%;
+    flex-grow: 1; /* Ensures the container grows to fill available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add .container form {
+    background-color: rgb(241, 233, 233);
+    padding: 30px;
+    border-radius: 8px;
+    width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add .container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.add .container input[type="text"],
+.add .container input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.add .container input[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 20px;
+    width: 6rem;
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add .container input[type="submit"]:hover {
+    background-color: #003399;
+}
+
+.add .container #description{
+    height: 6rem;
+}
+
+@media (max-width: 600px ) {
+    .books h1{
+        margin-top: 60px;
+    }
+    .add .container {
+        width: 90%;
+        /* margin-left: 2rem; */
+        padding: 20px;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .add .container input[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .books .book_item{
+        width: 90%;
+        padding: 10px;
+    }
+
+    .add .container #description{
+        height: 7rem;
+        width: 100%;
+    }
+}
+
+
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 10px 0 0 0;
+    padding: 20px 0 0 0;
+}
+
+/* Styling for the main heading */
+h1 {
+    font-size: 2.1em; 
+    color: #4e4d4d; 
+    text-align: center; 
+    margin-top: 30px; 
+    font-weight: bold; 
+    font-family: 'Georgia', serif; 
+}
+
+.books .heading_text i{
+    font-weight: 300;
+    color:  #353333bc;
+}
+
+
+
+/* Books container */
+.books {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between each book item */
+}
+
+/* Individual book item */
+.book_item {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%; /* Adjust width for main container */
+    margin: 2 auto; /* Centers the book item */
+    background-color:white/* White background for book items */
+}
+
+/* Empty row for spacing */
+.empty-row {
+    height: 20px; /* Adjust height for spacing */
+}
+
+/* Edit section */
+.edit {
+    display: flex;
+    justify-content: flex-end; /* Aligns the delete button to the right */
+}
+
+.delete-button {
+    background-color: red; /* Set the background color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px 0 rgb(84, 84, 84);
+    transition: transform 0.2s; /* Adds transition effect */
+}
+
+.delete-button:hover {
+    transform: scale(1.1); /* Bulging effect on hover */
+}
+
+/* Main content layout */
+.main-content {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    margin-top: 10px; /* Space between delete button and main content */
+}
+
+/* Book image styling */
+.book_image {
+    margin-right: 20px; /* Space between image and book details */
+}
+.book_image img {
+    width: auto;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 12px 24px 0 rgb(84, 84, 84);
+    transition: transform 0.5s; 
+}
+
+.book_image  img:hover {
+    transform: scale(1.3); /* Slight zoom on hover */
+}
+
+/* Book details styling */
+.book_details ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Ratings edit section */
+.rating_edit {
+    display: flex;
+    align-items: center; /* Aligns the rating edit elements */
+}
+
+.icon {
+    height: 17px;
+    margin-left: 8px; /* Space between text and icon */
+    border: none; /* Removes border from the pencil icon */
+    background: none; /* Ensures no background for the pencil icon */
+    cursor: pointer; /* Changes cursor on hover */
+    outline: none; /* Removes outline when focused */
+    filter: drop-shadow(4px 4px 6px rgb(84, 84, 84));
+    transition: transform 0.5s; 
+}
+
+.icon:hover{
+    transform: scale(1.3);
+}
+
+.rating_edit button, .description button{
+    border: none;
+    background-color: white;
+    margin-top: 5px;
+}
+.rating_edit{
+    display: flex;
+}
+
+.rating_edit input[type="number"]{
+    border: none;
+    border-bottom: 2px solid black;
+    margin-left: 10px;
+}
+
+
+/* Description styling */
+.description {
+    margin-top: 20px; /* Space between main content and description */
+}
+
+/* Author name styling */
+#author_name {
+    margin-left: 65%;
+    margin-top: 10px; /* Space above author name */
+    font-weight: normal; /* Makes the author name not bold */
+}
+
+/* Additional styling for textarea */
+textarea {
+    width: 100%; /* Makes the textarea full width */
+    min-height: 50px; /* Minimum height for textarea */
+    margin-top: 10px; /* Space above the textarea */
+}
+
+.rating_edit input[type=number]::-webkit-outer-spin-button,
+.rating_edit input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+} 
+
+
+@media (max-width: 600px) {
+    .books{
+        margin: 10px;
+    }
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book_item {
+        width: 90%;
+        margin: 0 auto; 
+    }
+
+
+    #author_name {
+        margin-left: 0; 
+        text-align: center;
+        margin-right: auto;
+    }
+}
+
+
+
+
+
+
+
+/* Footer Styles */
+footer {
+    background-color: #f5efef;
+    color: rgb(6, 35, 41);
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: auto; /* Ensures footer stays at the bottom of the page */
+}

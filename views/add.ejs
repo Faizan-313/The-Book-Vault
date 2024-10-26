@@ -1,0 +1,21 @@
+<body class="add">
+    <%- include("partials/header.ejs", { show: show }) %>
+    <div class="container">
+        <form action="/new" method="post">
+            <label for="name">Book Name *</label>
+            <input type="text" name="name" id="name" autofocus autocomplete="off" placeholder="Enter Book Name" required>
+
+            <label for="rattings">Your Rating *</label>
+            <input type="number" name="rattings" id="rattings" step="0.1" min="1" max="10" autocomplete="off" required placeholder="Give your rating 1-10">
+
+            <label for="isbn">ISBN</label>
+            <input type="text" name="isbn" id="isbn" autocomplete="off" placeholder="ISBN">
+
+            <label for="description">Description</label>
+            <textarea name="discription" id="description" placeholder="Description" autocomplete="off"></textarea>
+
+            <input type="submit" id="submit" value="Add">
+        </form>
+    </div>
+    <%- include("partials/footer.ejs") %>
+</body>
