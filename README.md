@@ -26,16 +26,15 @@ with all data stored in a PostgreSQL database. This project uses Node.js and Exp
       2.  npm i
 
 ### Configure the database
-Create a PostgreSQL database and create a table using queries in the queries.sql file and add your connection details to a .env file in t
-
-https://github.com/user-attachments/assets/53068ad1-baad-4d6d-a1ce-e76e1e3e74cf
-
-he root of your project.
+Create a PostgreSQL database and create a table using queries in the queries.sql file and add your connection details to a .env file in the root of your project.
 
 ### Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 
 Let me know if there’s anything else you’d like to include!
+
+## Demo of the project (excuse the quality)
+https://github.com/user-attachments/assets/53068ad1-baad-4d6d-a1ce-e76e1e3e74cf
 
 
