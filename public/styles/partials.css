@@ -1,153 +1,201 @@
-    /* Add padding to the body to prevent content from being hidden behind the navbar */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0; 
-        padding: 60px 0 0 0; /* Adjust the top padding to match or exceed the height of the navbar */
-    }
+/* Add padding to the body to prevent content from being hidden behind the navbar */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; 
+    padding: 60px 0 0 0; /* Adjust the top padding to match or exceed the height of the navbar */
+}
 
+nav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #f5efef;
+    padding: 10px 20px; 
+    border-bottom: 1px solid #e9ecef; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 50px; /* Set a fixed height to make it easier to adjust padding */
+}
+
+
+.left-nav {
+    display: flex; 
+    align-items: center; 
+}
+
+img {
+    margin-right: 20px; 
+    height: 40px; 
+    background-color: transparent;
+}
+
+nav a {
+    margin-right: 20px; 
+    text-decoration: none;
+    color: #007bff; 
+    font-weight: bold; 
+    padding: 8px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+        color: #0056b3; 
+        border: 2px solid #007bff; 
+        border-radius: 5px; 
+        background-color: rgba(0, 123, 255, 0.1); 
+}
+
+.filter-container {
+    display: flex; 
+    align-items: center;
+    margin-top: 16px;
+    margin-right: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+select {
+    background: transparent;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 5px; 
+    width: 100px; 
+    cursor: pointer; 
+    font-size: 14px;
+}
+
+select:focus {
+    color: black; 
+    outline: none; 
+    border-color: #80bdff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, .25); 
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #f5efef;
+    color: rgb(6, 35, 41);
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: auto; /* Ensures footer stays at the bottom of the page */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.socials {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.socials li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.socials li a {
+    color: rgb(5, 37, 41);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.socials li img{
+    width: 25px; 
+    height: auto;
+}
+
+.socials li img {
+    width: 24px; 
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.socials li:hover img {
+    transform: scale(1.4); 
+}
+
+
+
+
+@media (max-width: 600px) {
     nav {
-        display: flex;
-        justify-content: space-between; 
-        align-items: center;
-        background-color: #f5efef;
-        padding: 10px 20px; 
-        border-bottom: 1px solid #e9ecef; 
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        height: 50px; /* Set a fixed height to make it easier to adjust padding */
+        padding: 15px 30px 15px 10px;
     }
 
-    
-    .left-nav {
-        display: flex; 
-        align-items: center; 
-    }
-    
-    img {
-        margin-right: 20px; 
-        height: 40px; 
-        background-color: transparent;
-    }
-    
     nav a {
-        margin-right: 20px; 
-        text-decoration: none;
-        color: #007bff; 
-        font-weight: bold; 
-        padding: 8px;
-        transition: color 0.3s;
+        margin-right: 80px;
+        font-size: 16px;
     }
-    
-    nav a:hover {
-            color: #0056b3; 
-            border: 2px solid #007bff; 
-            border-radius: 5px; 
-            background-color: rgba(0, 123, 255, 0.1); 
-    }
-    
-    .filter-container {
-        display: flex; 
-        align-items: center;
-        margin-top: 16px;
-        margin-right: 20px;
-    }
-    
-    label {
-        margin-right: 10px;
-    }
-    
-    select {
-        background: transparent;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        padding: 5px; 
-        width: 100px; 
-        cursor: pointer; 
-        font-size: 14px;
-    }
-    
-    select:focus {
-        color: black; 
-        outline: none; 
-        border-color: #80bdff; 
-        box-shadow: 0 0 5px rgba(0, 123, 255, .25); 
-    }
-    
-    
-    /*footer*/
-    footer {
-        background-color: #f5efef;
-        color: rgb(6, 35, 41);
-        text-align: center;
-        padding: 20px 0;
-        /* position:; */
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-    
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .footer-content p {
-        margin: 0;
-        padding: 10px 0;
-        font-size: 14px;
-    }
-    
-    .socials {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-    
+
     .socials li {
-        display: inline;
-        margin: 0 10px;
+        margin: 10px 10px;
     }
-    
-    .socials li a {
-        color: rgb(5, 37, 41);
-        text-decoration: none;
-        font-size: 18px;
+}
+
+
+
+/* Loading screen spinner */
+.loading {
+    position: fixed;
+    width: 9%;
+    height: auto;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center precisely */
+    background: rgba(177, 173, 173); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 8px solid #ffffff; 
+    border-top: 8px solid #034d7f; /* Spinner color */
+    border-radius: 50%; /* Ensure circular shape */
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite; /* Faster spin  */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
-    
-    .socials li img{
-        width: 25px; 
-        height: auto;
+    100% {
+        transform: rotate(360deg);
     }
-    
-    .socials li img {
-        width: 24px; 
-        height: auto;
-        transition: transform 0.3s ease;
+}
+
+@media (max-width: 600px) {
+    .loading {
+        width: 12%; 
+        height: auto; 
     }
-    
-    .socials li:hover img {
-        transform: scale(1.4); 
+
+    .spinner {
+        width: 40px; /* Reduce size */
+        height: 40px;
+        border: 6px solid #ffffff; /* Adjust thickness */
+        border-top: 6px solid #034d7f;
     }
-    
-    
-    
-    
-    @media (max-width: 600px) {
-        nav {
-            padding: 15px 30px 15px 10px;
-        }
-    
-        nav a {
-            margin-right: 80px;
-            font-size: 16px;
-        }
-    
-        .socials li {
-            margin: 10px 10px;
-        }
-    }
-    
-    
+}
+
+
