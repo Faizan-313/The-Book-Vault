@@ -124,6 +124,13 @@ h1 {
     font-weight: 300;
     color:  #353333bc;
 }
+.empty_text{
+    text-align: center;
+    color: #e04444;
+    font-size: 1.5em;
+    height: 62vh;
+}
+
 
 
 
@@ -132,6 +139,7 @@ h1 {
     margin: 20px auto;
     display: flex;
     flex-direction: column;
+    height: 100h;
     gap: 20px; /* Adds space between each book item */
 }
 
@@ -290,14 +298,3 @@ textarea {
 
 
 
-
-
-/* Footer Styles */
-footer {
-    background-color: #f5efef;
-    color: rgb(6, 35, 41);
-    text-align: center;
-    padding: 20px 0;
-    width: 100%;
-    margin-top: auto; /* Ensures footer stays at the bottom of the page */
-}
