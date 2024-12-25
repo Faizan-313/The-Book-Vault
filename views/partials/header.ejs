@@ -22,9 +22,9 @@
                 <div class="filter-container">
                     <label for="filter-dropdown">Filter</label>
                     <select id="filter-dropdown" name="filter" onchange="document.getElementById('filter-form').submit()">
-                        <option value="id" <% if (filter_value === 'id') { %> selected <% } %>>Default</option>
-                        <option value="rattings" <% if (filter_value === 'rattings') { %> selected <% } %>>Ratings</option>
-                        <option value="event_date" <% if (filter_value === 'event_date') { %> selected <% } %>>Recency</option>
+                        <option value="book_name" <% if (filter_value === 'book_name') { %> selected <% } %>>Default</option>
+                        <option value="user_rating" <% if (filter_value === 'user_rating') { %> selected <% } %>>Ratings</option>
+                        <option value="event_date" <% if (filter_value === 'event_date') { %> selected <% } %>>Date</option>
                     </select>
                 </div>
             </form>
