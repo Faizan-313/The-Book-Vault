@@ -1,0 +1,66 @@
+.loginContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+    font-size: 1.3rem;
+}
+
+.loginContainer .box{
+    border: 1px rgb(240, 240, 240) solid;
+    padding: 2.5rem;
+    border-radius: 5px;
+    box-shadow:5px 10px 4px 4px #b1b0b0;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#login-button{
+    width: 95%;
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#login-button:hover {
+    background-color: #45a049;
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+@media  (max-width: 700px) {
+    .loginContainer{
+        font-size: 1rem;
+    }
+    .loginContainer .box{
+        width: 70%;
+        padding: 2rem;
+    }
+}
+
+@media  (min-width: 900px ) and (max-width: 1380px) {
+    .loginContainer{
+        font-size: 2.5rem;
+        height: 95vh;
+    }
+    .loginContainer .box{
+        width: 70%;
+        font-size: 2rem;
+    }
+}

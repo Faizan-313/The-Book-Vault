@@ -1,0 +1,107 @@
+<body>
+    <%- include("../partials/header.ejs", { show: show }) %>
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
+    <div class="books">
+        <h1 class="heading_text"><b>My Personal Library: </b><i>Books I've Enjoyed and Reviewed</i></h1>
+        <% if(data.length === 0){ %>
+            <h2 class="empty_text">No Books Found</h2>
+        <% } %>
+        <% data.forEach(book => { %>
+            <div class="book_item">
+                <div class="empty-row"></div>
+                
+                <div class="edit">
+                    <form action="/delete/deleteBook" method="POST">
+                        <button type="submit" name="deleteid" value="<%= book.book_id %>" class="delete-button">Delete</button>
+                    </form>
+                </div>
+                
+                <div class="main-content">
+                    <div class="book_image">
+                        <img src="<%= book.cover_url  %>" alt="Book Cover" style="width: 200px;">
+                    </div>
+                    <div class="book_details">
+                        <ul>
+                            <li>
+                                <strong><i>Book Name: </i></strong> <%= book.book_name %>
+                            </li>
+                            <div class="rating_edit">
+                                <li>
+                                    <strong><i>My Ratings:   </i></strong>
+                                    <span id="rating-display-<%= book.book_id %>"><%= book.user_rating %>/10</span></li>
+                                    <form action="/edit/editBook" method="post">
+                                        <button id="edit-rating-<%= book.book_id %>" type="button" onclick="editRating('<%= book.book_id %>')">
+                                            <img class="icon" src="/images/pencil-solid.svg" alt="pencil image" style="border: none;">
+                                        </button>
+                                        <input type="hidden" name="bookId" value="<%= book.book_id %>">
+                                        <input id="rating-input-<%= book.book_id %>" name="rating" type="number" min="1" max="10" step="0.1" value="<%= book.user_rating %>" style="display:none;">
+                                        <button id="done-rating-<%= book.book_id %>" type="submit" style="display:none;">
+                                            <img class="icon" src="/images/check-solid.svg" alt="tick image" style="border: none;">
+                                        </button>
+                                    </form>
+                            </div>
+                            <li>
+                                <strong><i>Date: </i></strong> <%= (book.event_date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                            </li>
+                            <li>
+                                <strong><i>Average Rating: </i></strong> <%= book.average_rating %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="description">
+                    <p><strong><i>Your Thought: </i></strong></p>
+                    <form action="/edit/editBook" method="post">
+                        <input type="hidden" name="bookId" value="<%= book.book_id %>">
+                        <p id="description-display-<%= book.book_id %>"><%= book.book_description %></p>
+                        <button id="edit-description-<%= book.book_id %>" type="button" onclick="editDescription('<%= book.book_id %>')">
+                            <img class="icon" src="/images/pencil-solid.svg" alt="pencil image" style="border: none;">
+                        </button>
+                        <textarea id="description-input-<%= book.book_id %>" name="description" style="display:none;"><%= book.book_description %></textarea>
+                        <button id="done-description-<%= book.book_id %>" type="submit" style="display:none;">
+                            <img class="icon" src="/images/check-solid.svg" alt="tick image" style="border: none;">
+                        </button>
+                    </form>
+                </div>
+                <p id="author_name"><strong><i>Author: </i></strong><span><%= book.author %></span></p>
+            </div>
+        <% }) %>
+    </div>
+    <%- include("../partials/footer.ejs") %>
+
+    <script>
+        function editRating(bookId) {
+            document.getElementById('rating-display-' + bookId).style.display = 'none';
+            document.getElementById('rating-input-' + bookId).style.display = 'inline-block';
+            document.getElementById('edit-rating-' + bookId).style.display = 'none';
+            document.getElementById('done-rating-' + bookId).style.display = 'inline-block';
+        }
+
+        function editDescription(bookId) {
+            document.getElementById('description-display-' + bookId).style.display = 'none';
+            document.getElementById('description-input-' + bookId).style.display = 'inline-block';
+            document.getElementById('edit-description-' + bookId).style.display = 'none';
+            document.getElementById('done-description-' + bookId).style.display = 'inline-block';
+        }
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('error')) {
+            const errorMessage = urlParams.get('error'); // Get the error message from the URL
+            alert(errorMessage);
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loading = document.getElementById("loading");
+
+            // Show the loading screen
+            loading.style.display = "flex";
+
+            window.addEventListener("load", () => {
+                loading.style.display = "none";
+            });
+        });
+    </script>
+</body>
