@@ -4,6 +4,7 @@ import db from "./db.js";
 import router from "./routes/auth.js";
 import bookRouter from "./routes/bookRouts.js";
 import editRouter from "./routes/editRoute.js";
+import logout from "./routes/logout.js";
 import session from "express-session";
 
 //setup the app and port
@@ -29,6 +30,7 @@ app.use('/new', bookRouter);
 app.use('/auth', router);
 app.use('/edit', editRouter);
 app.use('/delete', editRouter);
+app.use('/logout', logout);
 
 
 app.get("/",(req,res)=>{
