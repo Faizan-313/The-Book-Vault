@@ -1,3 +1,7 @@
+.login{
+    background: linear-gradient(135deg, #D9E3F0 30%, #B2C8DF 70%);
+}
+
 .loginContainer{
     display: flex;
     align-items: center;

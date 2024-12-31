@@ -1,5 +1,5 @@
 import axios from 'axios';
-import db from '../db.js';
+import db from '../db/db.js';
 
 //Capitalizes the first letters of each word in the book name
 function capitalizeFirstLetter(string) {

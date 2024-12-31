@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import db from "./db.js";
+import db from "./db/db.js";
 import router from "./routes/auth.js";
 import bookRouter from "./routes/bookRouts.js";
 import editRouter from "./routes/editRoute.js";
@@ -21,7 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000*60*60,
+        maxAge: 1000*60*60*24,
     }
 }));
 

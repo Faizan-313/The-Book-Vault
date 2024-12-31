@@ -1,4 +1,4 @@
-import db from "../db.js";
+import db from "../db/db.js";
 
 //for the editing of the ratings and the description part
 export const editBook = async (req,res)=>{
