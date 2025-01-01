@@ -6,8 +6,8 @@ import bookRouter from "./routes/bookRouts.js";
 import editRouter from "./routes/editRoute.js";
 import logout from "./routes/logout.js";
 import session from "express-session";
-import { createClient } from 'redis';
-import {RedisStore} from "connect-redis"
+// import { createClient } from 'redis';
+// import {RedisStore} from "connect-redis"
 import helmet from "helmet";
 
 
@@ -27,23 +27,23 @@ app.use((err, req, res, next) => {
 
 
 // Create Redis client
-const redisClient = createClient({
-    password: process.env.REDIS_PASSWORD,
-    socket: {
-        host: process.env.REDIS_HOST,
-        port: parseInt(process.env.REDIS_PORT),
-    }
-});
+// const redisClient = createClient({
+//     password: process.env.REDIS_PASSWORD,
+//     socket: {
+//         host: process.env.REDIS_HOST,
+//         port: parseInt(process.env.REDIS_PORT),
+//     }
+// });
 
-redisClient.on('error', (err) => console.log('Redis Client Error', err));
+// redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
-if (!redisClient.isOpen) {
-    redisClient.connect();
-}
+// if (!redisClient.isOpen) {
+//     redisClient.connect();
+// }
 
 
 app.use(session({
-    store: new RedisStore({ client: redisClient }),  // Use Redis store with the Redis client
+    // store: new RedisStore({ client: redisClient }),  // Use Redis store with the Redis client
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
