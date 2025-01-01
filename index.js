@@ -8,7 +8,7 @@ import logout from "./routes/logout.js";
 import session from "express-session";
 // import { createClient } from 'redis';
 // import {RedisStore} from "connect-redis"
-// import helmet from "helmet";
+import helmet from "helmet";
 
 
 //setup the app and port
@@ -47,9 +47,9 @@ app.use(session({
     }
 }));
 
-// app.use(helmet({
-//     contentSecurityPolicy: false,
-// }));
+app.use(helmet({
+    contentSecurityPolicy: false,
+}));
 
 //routes
 app.use('/new', bookRouter);
