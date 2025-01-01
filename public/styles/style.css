@@ -120,10 +120,37 @@ h1 {
     font-family: 'Georgia', serif; 
 }
 
-.books .heading_text i{
-    font-weight: 300;
-    color:  #353333bc;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+
+.heading_text {
+    font-family: 'Merriweather', serif;
+    color: #1a5276;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(90deg, #16a085, #2980b9);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.7rem;
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    letter-spacing: 0.08em;
 }
+
+
+@media (max-width: 768px) {
+    .heading_text {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading_text {
+        font-size: 2rem;
+    }
+}
+
+
+
 .empty_text{
     text-align: center;
     color: #e04444;

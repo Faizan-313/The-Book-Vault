@@ -36,10 +36,14 @@
     </nav>
     <script>
         document.getElementById("logoutButton").addEventListener("click", (e) => {
-            e.preventDefault();
-            const confirmLogout = confirm("Are you sure you want to logout?");
-            if (confirmLogout) {
-                window.location.href = "/logout";
+            if(e.isTrusted){
+                e.preventDefault();
+                const confirmLogout = confirm("Are you sure you want to logout?");
+                if (confirmLogout) {
+                    window.location.href = "/logout";
+                }
+            }else{
+                alert("Please click the button to logout");
             }
         });
     </script>

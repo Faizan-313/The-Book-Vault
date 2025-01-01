@@ -6,6 +6,10 @@ import bookRouter from "./routes/bookRouts.js";
 import editRouter from "./routes/editRoute.js";
 import logout from "./routes/logout.js";
 import session from "express-session";
+import { createClient } from 'redis';
+import {RedisStore} from "connect-redis"
+import helmet from "helmet";
+
 
 //setup the app and port
 const app = express();
@@ -14,15 +18,40 @@ const port = 3000;
 //setup the middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.set("view engine", "ejs");
 
-//to save the session 
+
+// Create Redis client
+const redisClient = createClient({
+    password: process.env.REDIS_PASSWORD,
+    socket: {
+        host: process.env.REDIS_HOST,
+        port: parseInt(process.env.REDIS_PORT),
+    }
+});
+
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
+
+if (!redisClient.isOpen) {
+    redisClient.connect();
+}
+
+
 app.use(session({
+    store: new RedisStore({ client: redisClient }),  // Use Redis store with the Redis client
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    name: 'sessionId',
     cookie: {
-        maxAge: 1000*60*60*24,
+        secure: false,
+        httpOnly: true,
+        maxAge: 1000 * 60 * 30, 
     }
+}));
+
+app.use(helmet({
+    contentSecurityPolicy: false,
 }));
 
 //routes
@@ -53,7 +82,7 @@ app.get('/filter', async (req, res) => {
 });
 
 //Loads the index page with the data and also applies the filter.
-app.get("/index", (req, res) => {
+app.get("/index", async (req, res) => {
     const userId = req.session.user?.id;
     const filter_value = req.query.filter || 'book_name';
 
@@ -65,10 +94,12 @@ app.get("/index", (req, res) => {
         ORDER BY ${filter_value} DESC`,
         [userId], (err, result) => {
         if (err) {
-            console.log(err);
+            // console.log(err);
             return res.status(500).send('Database error');
         }
-        res.render("pages/index.ejs", { show: true, data: result.rows, filter_value: filter_value });
+        let username = req.session.user.username;
+        username = username.toUpperCase();
+        res.render("pages/index.ejs", { show: true, data: result.rows, filter_value: filter_value, username: username });
     });
 });
 
