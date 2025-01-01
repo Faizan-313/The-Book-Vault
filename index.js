@@ -46,7 +46,7 @@ app.use(session({
     // store: new RedisStore({ client: redisClient }),  // Use Redis store with the Redis client
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         maxAge: 1000 * 60 * 30, 
     }
