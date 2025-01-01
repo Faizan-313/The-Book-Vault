@@ -1,7 +1,8 @@
 # The Book Vault 📚
 
-"The Book Vault" is a web application where user can store and manage their personal book collections. User can add books, rate them, and write descriptions, 
-with all data stored in a PostgreSQL database. This project uses Node.js and Express for backend API functionalities and connects to a PostgreSQL database.
+"The Book Vault" is a web application that allows users to store, manage, and review their personal book collections. With user authentication and registration, each user can securely add books, rate them, write descriptions, and manage their collection. All user data, including books and ratings, are stored in a PostgreSQL database. The project uses Node.js and Express to handle backend API functionalities, providing a personalized and secure experience for every user."
+
+This version emphasizes the user login/registration feature, highlighting its impact on personalization and security.
 
 ## Features
 - Add books to your collection with title, author, rating, description and cover image of book.
