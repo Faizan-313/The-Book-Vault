@@ -13,6 +13,7 @@
                 <div class="empty-row"></div>
                 
                 <div class="edit">
+                    <a class="read-button"  target="_blank" href="https://openlibrary.org/search?title={<%= book.book_name %>}">Read</a>
                     <form action="/delete/deleteBook" method="POST">
                         <button type="submit" name="deleteid" value="<%= book.book_id %>" class="delete-button">Delete</button>
                     </form>

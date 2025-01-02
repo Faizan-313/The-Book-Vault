@@ -143,6 +143,25 @@ footer {
         font-size: 16px;
     }
 
+    .left-nav img{
+        margin-right: 5px;
+    }
+
+    .left-nav > a{
+        margin-right: 0;
+        font-size: 0.8rem;
+    }
+
+    select{
+        padding: 0.2rem;
+        width: 5.7rem;
+    }
+
+    .filter-container{
+        margin-left: 3.9rem;
+        font-size: 0.9rem;
+    }
+
     .socials li {
         margin: 10px 10px;
     }
@@ -186,16 +205,16 @@ footer {
 
 @media (max-width: 600px) {
     .loading {
-        width: 12%; 
+        width: 16%; 
         height: auto; 
     }
 
     .spinner {
-        width: 40px; /* Reduce size */
+        width: 40px; 
         height: 40px;
-        border: 6px solid #ffffff; /* Adjust thickness */
+        border: 6px solid #ffffff; 
         border-top: 6px solid #034d7f;
     }
-} */
+} 
 
 

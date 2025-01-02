@@ -189,11 +189,16 @@ h1 {
 }
 
 /* Edit section */
+/* Edit Section */
 .edit {
     display: flex;
-    justify-content: flex-end; /* Aligns the delete button to the right */
+    justify-content: flex-end;
+    gap: 1.6rem;
+    height: 3rem;
+    flex-wrap: wrap; 
 }
 
+/* Delete Button */
 .delete-button {
     background-color: red; /* Set the background color */
     color: white;
@@ -203,11 +208,46 @@ h1 {
     cursor: pointer;
     box-shadow: 0 6px 12px 0 rgb(84, 84, 84);
     transition: transform 0.2s; /* Adds transition effect */
+    font-size: 1rem; /* Default font size */
 }
 
-.delete-button:hover {
-    transform: scale(1.1); /* Bulging effect on hover */
+/* Read Button */
+.read-button {
+    background-color: green;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    padding: 10px 15px; /* Adjusted padding for better consistency */
+    text-align: center;
+    height: 1.3rem;
+    border-radius: 5px;
+    box-shadow: 0 6px 12px 0 rgb(84, 84, 84);
+    transition: transform 0.2s;
 }
+
+/* Hover Effects */
+.delete-button:hover,
+.read-button:hover {
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .edit {
+        gap: 1rem;
+    }
+
+    .delete-button,
+    .read-button {
+        font-size: 0.7rem; 
+        padding: 6px 10px;
+        box-shadow: 0 4px 8px 0 rgb(84, 84, 84); 
+    }
+    .read-button{
+        height: 1rem;
+    }
+}
+
 
 /* Main content layout */
 .main-content {
@@ -314,7 +354,6 @@ textarea {
         width: 90%;
         margin: 0 auto; 
     }
-
 
     #author_name {
         margin-left: 0; 
