@@ -61,7 +61,8 @@ app.use('/logout', logout);
 
 app.get("/",(req,res)=>{
     const message = req.query.message || null;
-    res.render("pages/login.ejs",{message});
+    const email = req.query.email || null;
+    res.render("pages/login.ejs",{message:message,email:email});
 });
 
 app.get("/register",(req,res)=>{

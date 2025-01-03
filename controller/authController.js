@@ -18,7 +18,7 @@ export const loginUser = async (req, res)=>{
         bcrypt.compare(password,storedPassword,(err,result)=>{
             if(!result){
                 // console.log(err);
-                res.redirect(`/?message=${encodeURIComponent("Wrong password")}`);
+                res.redirect(`/?message=${encodeURIComponent("Wrong password")}&email=${encodeURIComponent(email)}`);
             }
             else{
                 req.session.user = {id: user.user_id, email: user.email, username: user.username};

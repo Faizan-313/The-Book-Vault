@@ -48,6 +48,12 @@ input[type="email"], input[type="password"], input[type="text"] {
     border-radius: 4px;
 }
 
+.invalid-credentials{
+    color: red;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
 @media  (max-width: 700px) {
     .loginContainer{
         font-size: 1rem;
