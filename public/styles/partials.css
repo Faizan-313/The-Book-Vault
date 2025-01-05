@@ -106,7 +106,7 @@ footer {
 
 .socials li {
     display: inline;
-    margin: 0 4px;
+    margin: 0;
 }
 
 .socials li a {
@@ -117,7 +117,6 @@ footer {
 
 .socials li #github-image{
     width: 26px;
-    height: 30px;
 }
 
 .socials li img {
