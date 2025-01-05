@@ -37,15 +37,35 @@ app.set("view engine", "ejs");
 // }
 
 
-app.use(session({
-    // store: new RedisStore({ client: redisClient }),  // Use Redis store with the Redis client
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 1000 * 60 * 30, 
-    }
-}));
+// app.use(session({
+//     // store: new RedisStore({ client: redisClient }),  // Use Redis store with the Redis client
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         maxAge: 1000 * 60 * 30, 
+//     }
+// }));
+
+import connectPgSimple from 'connect-pg-simple';
+const pgSession = connectPgSimple(session);
+
+
+app.use(
+    session({
+        store: new pgSession({
+        pool: db, 
+        }),
+        secret: 'process.env.SESSION_SECRET',
+        resave: false,
+        saveUninitialized: false,
+        cookie: { 
+            secure: false,
+            maxAge: 1000*60*60,
+        }, 
+    })
+);
+
 
 // app.use(helmet({
 //     contentSecurityPolicy: false,
