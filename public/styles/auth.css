@@ -75,27 +75,4 @@ input[type="email"], input[type="password"], input[type="text"] {
     }
 }
 
-.password #togglePassword {
-    right: 30%; /* Adjust position */
-    margin-top: 10px; /* Smaller margin */
-    padding-right: 2px; /* Adjust padding */
-  }
 
-
-/* Small screens (phones, 576px and below) */
-@media (max-width: 576px) {
-    .password #togglePassword {
-    right: 20%; /* Further adjust position */
-    margin-top: 8px; /* Smaller margin */
-    padding-right: 1px; /* Minimized padding */
-  }
-}
-
-/* Extra small screens (phones, 400px and below) */
-@media (max-width: 400px) {
-    .password #togglePassword {
-    right: 10%; /* Narrower right alignment */
-    margin-top: 5px; /* Tighter spacing */
-    padding-right: 0; /* Remove padding */
-}
-}
