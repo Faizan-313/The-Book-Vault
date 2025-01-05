@@ -54,7 +54,7 @@ const pgSession = connectPgSimple(session);
 app.use(
     session({
         store: new pgSession({
-        pool: db, 
+            pool: db, 
         }),
         secret: 'process.env.SESSION_SECRET',
         resave: false,
