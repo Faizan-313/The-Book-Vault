@@ -1,46 +1,49 @@
-// import pg from "pg";
+import pg from "pg";
 import env from "dotenv";
 
 env.config();
 
-// //setup the postgres database
-// const db = new pg.Client({
-//     user: process.env.PG_USER,
-//     host: process.env.PG_HOST,
-//     database: process.env.PG_DATABASE,
-//     password: process.env.PG_PASSWORD,
-//     port: parseInt(process.env.PG_PORT),
-// });
-
-// db.connect(err=>{
-//     if(err){
-//         console.log('Database error',err);
-//     }else{
-//         console.log('Database connected');
-//     }
-// });
-
-import pkg from 'pg';
-const { Pool } = pkg;
-
-
-const db = new Pool({
+//setup the postgres database
+const db = new pg.Client({
     user: process.env.PG_USER,
     host: process.env.PG_HOST,
     database: process.env.PG_DATABASE,
     password: process.env.PG_PASSWORD,
     port: parseInt(process.env.PG_PORT),
     ssl: {
-        rejectUnauthorized: false, 
-    },
+            rejectUnauthorized: false, 
+        },
 });
 
-db.connect((err, client, release) => {
-    if (err) {
-        return console.error('Database connection error', err.stack);
+db.connect(err=>{
+    if(err){
+        console.log('Database error',err);
+    }else{
+        console.log('Database connected');
     }
-    console.log('Connected to the database');
-    release();
 });
+
+// import pkg from 'pg';
+// const { Pool } = pkg;
+
+
+// const db = new Pool({
+//     user: process.env.PG_USER,
+//     host: process.env.PG_HOST,
+//     database: process.env.PG_DATABASE,
+//     password: process.env.PG_PASSWORD,
+//     port: parseInt(process.env.PG_PORT),
+//     ssl: {
+//         rejectUnauthorized: false, 
+//     },
+// });
+
+// db.connect((err, client, release) => {
+//     if (err) {
+//         return console.error('Database connection error', err.stack);
+//     }
+//     console.log('Connected to the database');
+//     release();
+// });
 
 export default db;

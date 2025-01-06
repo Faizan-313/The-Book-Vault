@@ -1,0 +1,32 @@
+.cover-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.cover-item {
+    text-align: center;
+}
+
+.cover-item img {
+    width: 150px;
+    height: auto;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.cover-item img:hover {
+    transform: scale(1.1);
+    border-color: #007BFF;
+}
+
+.cover-grid .cover-item input[type="radio"] {
+    display: none;
+}
+
+.cover-grid .cover-item input[type="radio"]:checked + label img {
+    border-color: #007BFF;
+    transform: scale(1.1);
+}

@@ -7,14 +7,14 @@
         <div class="box">
             <form method="post" action="/auth/register" class="login-form">
                 <label for="name">Name:</label>
-                <input type="text" name="name" autofocus required>
+                <input type="text" name="name"  autofocus required>
                 <label for="email">Email:</label>
-                <input type="email" name="email" required>
+                <input type="email" name="email" autocomplete="email" required>
 
                 <div class="password" style="margin-bottom: 10px;">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" minlength="6" maxlength="30" style="margin-bottom: 3px" required>
-                    <input type="checkbox" id="togglePassword" style="cursor: pointer; vertical-align: middle; margin-left: 1px;">
+                    <input type="checkbox" id="togglePassword" style="cursor: pointer;outline: none; vertical-align: middle; margin-left: 1px;">
                     <span style="font-size: 16px; margin-left: 2px; margin-bottom: 6px; vertical-align: middle; color: #555;">Show</span>
                 </div>
 

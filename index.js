@@ -6,8 +6,8 @@ import bookRouter from "./routes/bookRouts.js";
 import editRouter from "./routes/editRoute.js";
 import logout from "./routes/logout.js";
 import session from "express-session";
-// import { createClient } from 'redis';
-// import {RedisStore} from "connect-redis"
+import { createClient } from 'redis';
+import {RedisStore} from "connect-redis"
 // import helmet from "helmet";
 
 
@@ -20,51 +20,53 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+const redisClient = createClient({
+    password: process.env.REDIS_PASSWORD,
+    socket: {
+        host: process.env.REDIS_HOST,
+        port: parseInt(process.env.REDIS_PORT),
+    }
+});
 
-// Create Redis client
-// const redisClient = createClient({
-//     password: process.env.REDIS_PASSWORD,
-//     socket: {
-//         host: process.env.REDIS_HOST,
-//         port: parseInt(process.env.REDIS_PORT),
-//     }
-// });
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
-// redisClient.on('error', (err) => console.log('Redis Client Error', err));
-
-// if (!redisClient.isOpen) {
-//     redisClient.connect();
-// }
+if (!redisClient.isOpen) {
+    redisClient.connect();
+}
 
 
-// app.use(session({
-//     // store: new RedisStore({ client: redisClient }),  // Use Redis store with the Redis client
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         maxAge: 1000 * 60 * 30, 
-//     }
-// }));
+app.use(session({
+    store: new RedisStore({ client: redisClient}),  // Use Redis store with the Redis client
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        secure: false, 
+        sameSite: 'lax',
+        path: '/',
+        maxAge: 1000 * 60 * 60 *24, 
+    }
+}));
 
-import connectPgSimple from 'connect-pg-simple';
-const pgSession = connectPgSimple(session);
+// import connectPgSimple from 'connect-pg-simple';
+// const pgSession = connectPgSimple(session);
 
 
-app.use(
-    session({
-        store: new pgSession({
-            pool: db, 
-        }),
-        secret: 'process.env.SESSION_SECRET',
-        resave: false,
-        saveUninitialized: false,
-        cookie: { 
-            secure: false,
-            maxAge: 1000*60*60,
-        }, 
-    })
-);
+// app.use(
+//     session({
+//         store: new pgSession({
+//             pool: db, 
+//         }),
+//         secret: 'process.env.SESSION_SECRET',
+//         resave: false,
+//         saveUninitialized: false,
+//         cookie: { 
+//             secure: false,
+//             maxAge: 1000*60*60,
+//         }, 
+//     })
+// );
 
 
 // app.use(helmet({
@@ -101,6 +103,9 @@ app.get('/filter', async (req, res) => {
 
 //Loads the index page with the data and also applies the filter.
 app.get("/index", async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect('/');  
+    }
     const userId = req.session.user?.id;
     const filter_value = req.query.filter || 'book_name';
 

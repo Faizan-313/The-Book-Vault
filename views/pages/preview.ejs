@@ -1,0 +1,24 @@
+<body>
+    <%- include("../partials/header.ejs", { show: show }) %>
+    <div>
+        <header>
+            <h1>Select a Cover for <%= bookName %></h1>
+        </header>
+        <main>
+            <form action="/saveCover" method="POST">
+                <div class="cover-grid">
+                    <% cover_url.forEach((url, index) => { %>
+                        <div class="cover-item">
+                            <input type="radio" id="cover<%= index %>" name="selected_cover" value="<%= url %>" required>
+                            <label for="cover<%= index %>">
+                                <img src="<%= url %>" alt="Book Cover <%= index + 1 %>">
+                            </label>
+                        </div>
+                    <% }); %>
+                </div>
+                <button type="submit">Confirm Selection</button>
+            </form>
+        </main>
+    </div>
+    <%- include("../partials/footer.ejs") %>
+</body>
