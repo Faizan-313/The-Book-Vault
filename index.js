@@ -8,7 +8,7 @@ import logout from "./routes/logout.js";
 import session from "express-session";
 import { createClient } from 'redis';
 import {RedisStore} from "connect-redis"
-// import helmet from "helmet";
+import helmet from "helmet";
 
 
 //setup the app and port
@@ -34,7 +34,6 @@ if (!redisClient.isOpen) {
     redisClient.connect();
 }
 
-
 app.use(session({
     store: new RedisStore({ client: redisClient}),  // Use Redis store with the Redis client
     secret: process.env.SESSION_SECRET,
@@ -42,36 +41,16 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: false, 
+        secure: true, 
         sameSite: 'lax',
         path: '/',
         maxAge: 1000 * 60 * 60 *24, 
     }
 }));
 
-// import connectPgSimple from 'connect-pg-simple';
-// const pgSession = connectPgSimple(session);
-
-
-// app.use(
-//     session({
-//         store: new pgSession({
-//             pool: db, 
-//         }),
-//         secret: 'process.env.SESSION_SECRET',
-//         resave: false,
-//         saveUninitialized: false,
-//         cookie: { 
-//             secure: false,
-//             maxAge: 1000*60*60,
-//         }, 
-//     })
-// );
-
-
-// app.use(helmet({
-//     contentSecurityPolicy: false,
-// }));
+app.use(helmet({
+    contentSecurityPolicy: false,
+}));
 
 //routes
 app.use('/new', bookRouter);
@@ -82,6 +61,9 @@ app.use('/logout', logout);
 
 
 app.get("/",(req,res)=>{
+    if(req.session.user){
+        return res.redirect("/index");
+    }
     const message = req.query.message || null;
     const email = req.query.email || null;
     res.render("pages/login.ejs",{message:message,email:email});
