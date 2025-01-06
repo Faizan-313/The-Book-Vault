@@ -39,13 +39,8 @@ export const registerUser = async (req,res)=>{
                 await db.query("insert into users (username,email,password_hash) values ($1,$2,$3)",[name,email,hash]);
                 const response = await db.query("select user_id from users where email = $1",[email]);
                 const userId = response.rows[0].user_id;
-                req.session.regenerate((err) => {
-                    if (err) {
-                        return res.status(500).send("Session regeneration failed.");
-                    }
-                    req.session.user = { id: userId, email: email, username: name };  // Set session data
-                    res.redirect("/index");  // Redirect to the dashboard or home page
-                });
+                req.session.user = { id: userId, email: email, username: name };  // Set session data
+                res.redirect("/index"); 
             }
         })
     }else{
