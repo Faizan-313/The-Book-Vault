@@ -7,7 +7,7 @@ import editRouter from "./routes/editRoute.js";
 import logout from "./routes/logout.js";
 import session from "express-session";
 import { createClient } from 'redis';
-import {RedisStore} from "connect-redis"
+import {RedisStore} from "connect-redis";
 import helmet from "helmet";
 
 
@@ -43,8 +43,7 @@ app.use(session({
         httpOnly: true,
         secure: false, 
         sameSite: 'lax',
-        path: '/',
-        maxAge: 1000 * 60 * 60 *24, 
+        maxAge: 1000 * 60 * 60 * 60, 
     }
 }));
 
