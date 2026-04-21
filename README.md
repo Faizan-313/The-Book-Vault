@@ -35,7 +35,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 Let me know if there’s anything else you’d like to include!
 
-## Demo of the project (older version)
+## Demo of the project
 https://github.com/user-attachments/assets/53068ad1-baad-4d6d-a1ce-e76e1e3e74cf
 
 
